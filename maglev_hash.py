@@ -185,28 +185,10 @@ class HashGenerator(object):
     @staticmethod
     def __BKDRHash(key):
         seed = 131  # 31 131 1313 13131 131313 etc..
-        hash = 0
+        value = 0
         for i in range(len(key)):
-            hash = (hash * seed) + ord(key[i])
-        return hash & 0x7FFFFFFF
-
-
-class TestMagHash(object):
-    def test_add_backend(self):
-        mag_hash = MaglevHash(7)
-        mag_hash.add_backend(['B0', 'B1', 'B2'])
-        assert mag_hash.backend_num() == 3
-        assert mag_hash.lookup_table().count('B0') >= 2
-        assert mag_hash.lookup_table().count('B1') >= 2
-        assert mag_hash.lookup_table().count('B2') >= 2
-
-    def test_remove_backend(self):
-        mag_hash = MaglevHash(7)
-        mag_hash.add_backend(['B0', 'B1', 'B2'])
-        mag_hash.remove_backend(['B2'])
-        assert mag_hash.lookup_table().count('B0') >= 3
-        assert mag_hash.lookup_table().count('B1') >= 3
-        assert mag_hash.lookup_table().count('B2') == 0
+            value = (value * seed) + ord(key[i])
+        return value & 0x7FFFFFFF
 
 
 if __name__ == '__main__':
