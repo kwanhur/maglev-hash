@@ -213,7 +213,7 @@ class HashGenerator(object):
 
 if __name__ == '__main__':
     mh = MaglevHash(7)
-    mh.add_backend(['b0', 'b1', 'b2'])
+    mh.add_backends(['b0', 'b1', 'b2'])
     print(mh.lookup_table())
-    mh.remove_backend(['b2'])
+    mh.remove_backend('b2')
     print(mh.lookup_table())
