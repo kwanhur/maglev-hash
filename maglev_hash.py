@@ -4,6 +4,8 @@ import math
 
 import mmhash
 
+VERSION = '0.0.1'
+
 
 class MaglevHash(object):
     """
