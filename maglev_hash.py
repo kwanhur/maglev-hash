@@ -53,6 +53,9 @@ class MaglevHash(object):
         return str(self.__backends[bIdx])
 
     def add_backend(self, backends):
+        if not isinstance(backends, list):
+            raise Exception('invalid type,must be list')
+
         for b in backends:
             if self.__b_index.get(b):
                 continue
@@ -65,6 +68,9 @@ class MaglevHash(object):
         self.__populate()
 
     def remove_backend(self, backends):
+        if not isinstance(backends, list):
+            raise Exception('invalid type,must be list')
+
         del_list = []
         for b in backends:
             idx = self.__b_index[b]
