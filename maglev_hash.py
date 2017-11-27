@@ -52,7 +52,13 @@ class MaglevHash(object):
         bIdx = self.__entry[int(fhash % m)]
         return str(self.__backends[bIdx])
 
-    def add_backend(self, backends):
+    def add_backend(self, backend):
+        if not isinstance(backend, str):
+            raise Exception('invalid type,must be string')
+
+        self.add_backends([backend])
+
+    def add_backends(self, backends):
         if not isinstance(backends, list):
             raise Exception('invalid type,must be list')
 
@@ -67,7 +73,13 @@ class MaglevHash(object):
         self.__spawn_permutation(0)
         self.__populate()
 
-    def remove_backend(self, backends):
+    def remove_backend(self, backend):
+        if not isinstance(backend, str):
+            raise Exception('invalid type,must be string')
+
+        self.remove_backends([backend])
+
+    def remove_backends(self, backends):
         if not isinstance(backends, list):
             raise Exception('invalid type,must be list')
 
