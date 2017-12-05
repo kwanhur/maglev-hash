@@ -123,20 +123,23 @@ class MaglevHash(object):
         nexts = [None] * n
         for i in range(n):
             nexts[i] = 0
+
+        entries = [None] * m
         for i in range(m):
-            self.__entry[i] = -1
+            entries[i] = -1
 
         j = 0
         while True:
             for i in range(n):
                 c = self.__permutation[i][nexts[i]]
-                while self.__entry[c] >= 0:
+                while entries[c] >= 0:
                     nexts[i] += 1
                     c = self.__permutation[i][nexts[i]]
-                self.__entry[c] = i
+                entries[c] = i
                 nexts[i] += 1
                 j += 1
                 if j == m:
+                    self.__entry = entries
                     return
 
     def __spawn_permutation(self, m):
